@@ -4,55 +4,25 @@ import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, routes } from './/app-routing.module';
 import { RouterModule } from '@angular/router';
-// import { HomeComponent } from './home/home.component';
-// import { PushttComponent } from './pushtt/pushtt.component';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
-// @Injectable()
-// export class TokenInterceptor implements HttpInterceptor {
-//     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-//         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-//         if (currentUser && currentUser.token) {
-//             request = request.clone({
-//                 setHeaders: {
-//                     Authorization: `JWT ${currentUser.token}`
-//                 }
-//             });
-//         }
-
-//         return next.handle(request);
-//     }
-// }
-
-
-// @Injectable()
-// export class KeycloakTokenInterceptor implements HttpInterceptor {
-//     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-//         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-//         // console.debug('Interceptor:', currentUser);
-
-//         if (currentUser && currentUser.access_token) {
-//             request = request.clone({
-//                 setHeaders: {
-//                     Authorization: `Bearer ${currentUser.access_token}`
-//                 }
-//             });
-//         }
-
-//         return next.handle(request);
-//     }
-// }
+library.add(fas, far);
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        // HomeComponent,
-        // PushttComponent
     ],
     imports: [
         BrowserModule,
@@ -66,11 +36,10 @@ import { RouterModule } from '@angular/router';
         ReactiveFormsModule,
         AppRoutingModule,
         RouterModule.forRoot(routes),
+        InfiniteScrollModule,
+        FontAwesomeModule,
     ],
     providers: [
-        // // HttpClientModule
-        // { provide: HTTP_INTERCEPTORS, useClass: KeycloakTokenInterceptor, multi: true },
-        // // { provide: APP_INITIALIZER, useFactory: initializer, multi: true, deps: [KeycloakService] }
     ],
     bootstrap: [AppComponent]
 })

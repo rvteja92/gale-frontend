@@ -28,17 +28,27 @@
 
                 <button class="btn btn-primary" type="submit">Get Images</button>
             </form>
+
+            <hr>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
         <div class="col-3" *ngFor="let image_url of crawled_image_urls">
-            <div class="card" style="width: 18rem; margin: 15px;">
+            <div class="card" style="margin: 5px;">
                 <img class="card-img-top" src="{{ image_url }}" alt="Image">
                 <div class="card-body">
-                    <a href="{{ image_url }}" class="btn btn-primary">View image</a>
+                    <a href="{{ image_url }}">View image</a>
                 </div>
             </div>
+        </div>
+
+        <div class="col-12 text-center" *ngIf="loading">
+            <fa-icon icon="spinner" [spin]="true" [pulse]="true" size="3x"></fa-icon>
+        </div>
+
+        <div class="col-12 text-center" *ngIf="complete">
+            <h4>The End</h4>
         </div>
     </div>
 </div>

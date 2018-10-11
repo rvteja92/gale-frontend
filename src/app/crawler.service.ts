@@ -4,20 +4,21 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CrawlerService {
-  crawl_endpoint = '/api/crawler/crawl/';
+    crawl_endpoint = '/api/crawler/crawl/';
 
-  constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient) { }
 
-  public crawl(url: string, depth: number):Observable<any> {
-    return this.httpClient.post(
-      `${environment.baseApiUrl}${this.crawl_endpoint}`,
-      {
-        url: url,
-        depth: depth
-      }
-    )
-  }
+    public crawl(url: string, depth: number, page: number): Observable<any> {
+        return this.httpClient.post(
+            `${environment.baseApiUrl}${this.crawl_endpoint}`,
+            {
+                url: url,
+                depth: depth,
+                page: page
+            }
+        );
+    }
 }
