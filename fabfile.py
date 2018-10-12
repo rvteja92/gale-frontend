@@ -66,7 +66,7 @@ def deploy_on_test():
             # run('pip install -r spyder_api/requirements.txt')
             run('npm install')
             run('sudo npm install -g @angular/cli')
-            run('ng build --aot --prod')
+            run('ng build --prod')
             # run('sudo service nginx restart')
 
         # with cd(TEST_DEPLOY_PATH):
